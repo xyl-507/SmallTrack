@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# SmallTrack
-=======
 # SmallTrack
 
 This project hosts the code for implementing the SmallTrack algorithm for visual tracking, as presented in our paper: 
@@ -84,4 +81,3 @@ See [TRAIN.md](TRAIN.md) for detailed instruction.
 The code based on the [PySOT](https://github.com/STVIR/pysot) , [SiamBAN](https://github.com/hqucv/siamban) ,
 [GAL](https://ieeexplore.ieee.org/document/9547682/) , [WaveCNets](https://ieeexplore.ieee.org/document/9508165/) and [Wavelet-Attention](https://link.springer.com/article/10.1007/s00530-022-00889-8)
 We would like to express our sincere thanks to the contributors.
->>>>>>> a8e285a (20230506)

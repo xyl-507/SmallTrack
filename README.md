@@ -1,12 +1,16 @@
-# SmallTrack
+# [TGRS2023] SmallTrack: Wavelet Pooling and Graph Enhanced Classification for UAV Small Object Tracking 
 
-This project hosts the code for implementing the SmallTrack algorithm for visual tracking, as presented in our paper: 
-
+This is an official pytorch implementation of the 2023 IEEE Transactions on Geoscience and Remote Sensing paper: 
 ```
 SmallTrack: Wavelet Pooling and Graph Enhanced Classification for UAV Small Object Tracking
+(accepted by IEEE Transactions on Geoscience and Remote Sensing, DOI: 10.1109/TGRS.2023.3305728)
 ```
 
+
+The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10220112)
+
 The models and raw results can be downloaded from [BaiduYun](https://pan.baidu.com/s/1XRaXBpb4ab2XDrP3ViMCUw?pwd=1234). 
+
 The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/video/BV1Xv4y1e78e/)
 
 ### UAV Tracking

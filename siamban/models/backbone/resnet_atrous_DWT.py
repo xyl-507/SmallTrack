@@ -103,7 +103,6 @@ class Bottleneck(nn.Module):
         out = self.conv3(out)
         out = self.bn3(out)
 
-
         if self.downsample is not None:
             residual = self.downsample(x)
 
@@ -182,7 +181,6 @@ class ResNet(nn.Module):
                               padding=padding, dilation=dd),
                     nn.BatchNorm2d(planes * block.expansion),
                 )
-
 
         layers = []
         layers.append(block(self.inplanes, planes, stride,

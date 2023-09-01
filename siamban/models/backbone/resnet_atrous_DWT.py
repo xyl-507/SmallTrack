@@ -155,11 +155,6 @@ class ResNet(nn.Module):
                 m.bias.data.zero_()
         self.wad = wad_module()
 
-    # self.layer1 = self._make_layer(block, 64, layers[0])  3
-    # self.layer2 = self._make_layer(block, 128, layers[1], stride=2)  4
-    # self.layer3 = self._make_layer(block, 256, layers[2],stride=1, dilation=2)  6
-    # self.layer4 = self._make_layer(block, 512, layers[3],stride=1, dilation=4)  3
-
     def _make_layer(self, block, planes, blocks, stride=1, dilation=1):  # 多了dilation
         downsample = None  # ----------------------------开始
         dd = dilation
@@ -174,42 +169,12 @@ class ResNet(nn.Module):
                 if dilation > 1:
                     dd = dilation // 2
                     padding = dd
-                    # downsample = nn.Sequential(
-                    #     nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
-                    #     nn.Conv2d(self.inplanes, planes * block.expansion,
-                    #               kernel_size=1, stride=1, bias=False,
-                    #               # 原版resnet用的是1*1，stride为2的卷积，按这种3*3的情况来说改动不了
-                    #               padding=padding, dilation=dd),
-                    #     nn.BatchNorm2d(planes * block.expansion),
-                    # )
 
                 else:  # ------------------------结束，多出来的部分
                     # reduce the effective strides at the last two block from 16 pixels and 32 pixels to 8 pixels by modifying the conv4 and conv5 block to have unit spatial stride,
                     # and also increase its receptive ﬁeld by dilated convolutions
                     dd = 1
                     padding = 0
-                    # downsample = nn.Sequential(
-                    #     nn.Conv2d(self.inplanes, planes * block.expansion,
-                    #               kernel_size=3, stride=stride, bias=False,
-                    #               # 原版resnet用的是1*1，stride为2的卷积，按这种3*3的情况来说改动不了
-                    #               padding=padding, dilation=dd),
-                    #     nn.BatchNorm2d(planes * block.expansion),
-                    # )
-                # if stride == 2:    #  DWT xyl 20221011
-                #     downsample = nn.Sequential(
-                #         wad_module(),
-                #         nn.Conv2d(self.inplanes, planes * block.expansion,
-                #                 kernel_size=1, stride=1, bias=False,  # 原版resnet用的是1*1，stride为2的卷积，按这种3*3的情况来说改动不了
-                #                 padding=padding, dilation=dd),
-                #         nn.BatchNorm2d(planes * block.expansion),
-                #     )
-                # else:
-                #     downsample = nn.Sequential(
-                #         nn.Conv2d(self.inplanes, planes * block.expansion,
-                #                 kernel_size=3, stride=stride, bias=False,  # 原版resnet用的是1*1，stride为2的卷积，按这种3*3的情况来说改动不了
-                #                 padding=padding, dilation=dd),
-                #         nn.BatchNorm2d(planes * block.expansion),
-                #     )
 
                 downsample = nn.Sequential(
                     nn.Conv2d(self.inplanes, planes * block.expansion,
@@ -241,7 +206,6 @@ class ResNet(nn.Module):
         p3 = self.layer3(p2)
         p4 = self.layer4(p3)
         out = [x_, p1, p2, p3, p4]  # 使用的是池化之前的特征层，why？
-        # out = [x_, p1g, p2, p3, p4]  # xyl 20210203 改变layer1的维度，使其能和layer 2 3相加
         out = [out[i] for i in self.used_layers]  # 根据used_layer来设置输出，xyl 20210202
         if len(out) == 1:
             return out[0]

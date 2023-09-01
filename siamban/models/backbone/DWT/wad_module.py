@@ -75,10 +75,10 @@ class wad_module(nn.Module):
         output = LL
         # output = LL.sub(_)  # xyl 20221013 想减去噪声信息 HH
 
-        # x_high = self.softmax(torch.add(LH, HL))
-        # # x_high = self.softmax(torch.add(LH, HL).sub(_))  # xyl 20221013 想减去噪声信息 HH
-        # AttMap = torch.mul(output, x_high)
-        # output = torch.add(output, AttMap)
+        x_high = self.softmax(torch.add(LH, HL))
+        # x_high = self.softmax(torch.add(LH, HL).sub(_))  # xyl 20221013 想减去噪声信息 HH
+        AttMap = torch.mul(output, x_high)
+        output = torch.add(output, AttMap)
         # for k in x_high:  # 可视化 xyl 20221011
         #     show_tensor(k.sum(dim=0),3, 'x_high')
         # for k in AttMap:

@@ -15,10 +15,13 @@ The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/vide
 
 ### UAV Tracking
 
-| Model(arch+backbone)                                | UAV20L(Suc./Pre.)  | UAVDT(Suc./Pre.)  | DTB70(Suc./Pre.)   | VisDrone2019-SOT-test-dev(Suc./Pre.)| LaTOT(Suc./Pre./N.Pre.)   | 
-| --------------------                                | :----------------: | :---------------: | :---------------:  |          :---------------:          |    :---------------:      |
-| smalltrack_r50_l234                                 |    0.600/0.797     |    0.637/0.866    |    0.654/0.858     |              0.625/0.849            |     0.271/0.438/0.339     |
-
+| Datasets | smalltrack_r50_l234|
+| :--------------------: | :----------------: |
+| UAV20L(Suc./Pre.) | 0.600/0.797|
+| UAVDT(Suc./Pre.) | 0.637/0.866 |
+| DTB70(Suc./Pre.) | 0.654/0.858 |
+| VisDrone2019-SOT-test-dev(Suc./Pre.) |0.625/0.849 |
+| LaTOT(Suc./Pre./N.Pre.) | 0.271/0.438/0.339 |
 
 Note:
 

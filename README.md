@@ -9,7 +9,7 @@ SmallTrack: Wavelet Pooling and Graph Enhanced Classification for UAV Small Obje
 
 The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10220112)
 
-The models and raw results can be downloaded from [BaiduYun](https://pan.baidu.com/s/1XRaXBpb4ab2XDrP3ViMCUw?pwd=1234). 
+The models and raw results can be downloaded from [**[GitHub]**](https://github.com/xyl-507/SmallTrack/releases/tag/Downloads) or [**[BaiduYun]**](https://pan.baidu.com/s/1XRaXBpb4ab2XDrP3ViMCUw?pwd=1234). 
 
 The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/video/BV1Xv4y1e78e/)
 

@@ -88,9 +88,9 @@ def build_backbone(backbone, output_stride, BatchNorm, input_channels):
 #                 m.eval()
 
 
-class GAL(nn.Module):
+class GEM(nn.Module):
     def __init__(self, sync_bn=True, input_channels=256):
-        super(GAL, self).__init__()
+        super(GEM, self).__init__()
         self.input_channels = input_channels
         if sync_bn == True:
             BatchNorm1d = SynchronizedBatchNorm1d

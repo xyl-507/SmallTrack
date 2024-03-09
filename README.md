@@ -15,6 +15,7 @@ The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/vide
 
 ### Proposed module
 DWT in [backbone](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/backbone/resnet_atrous_DWT.py)
+
 GEM in [model_builder](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/model_builder.py)
 
 ### UAV Tracking

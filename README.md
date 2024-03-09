@@ -14,9 +14,9 @@ The models and raw results can be downloaded from [**[GitHub]**](https://github.
 The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/video/BV1Xv4y1e78e/)
 
 ### Proposed module
-DWT in [backbone](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/backbone/resnet_atrous_DWT.py)
+- `DWT` in [backbone](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/backbone/resnet_atrous_DWT.py)
 
-GEM in [model_builder](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/model_builder.py)
+- `GEM` in [model_builder](https://github.com/xyl-507/SmallTrack/blob/main/siamban/models/model_builder.py)
 
 ### UAV Tracking
 

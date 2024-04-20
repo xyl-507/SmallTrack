@@ -14,7 +14,7 @@ from siamban.models.loss import select_cross_entropy_loss, select_iou_loss
 from siamban.models.backbone import get_backbone
 from siamban.models.head import get_ban_head
 from siamban.models.neck import get_neck
-from siamban.models.gal.gal import GEM
+from siamban.models.gal.gal import GAL
 
 
 class ModelBuilder(nn.Module):
@@ -30,7 +30,7 @@ class ModelBuilder(nn.Module):
             self.neck = get_neck(cfg.ADJUST.TYPE,
                                  **cfg.ADJUST.KWARGS)
 
-        self.gem = GEM(sync_bn=True, input_channels=2)  # xyl 20221003   cls channel:2, loc channel: 4
+        self.gal = GAL(sync_bn=True, input_channels=2)  # xyl 20221003   cls channel:2, loc channel: 4
 
         # build ban head
         if cfg.BAN.BAN:
@@ -71,7 +71,7 @@ class ModelBuilder(nn.Module):
             else:
                 self.cf = xf
         cls, loc = self.head(self.zf, xf)
-        cls = self.gem(cls)  # xyl 20221003
+        cls = self.gal(cls)  # xyl 20221003
 
         if cfg.TRACK.TEMPLATE_UPDATE:
 
@@ -114,7 +114,7 @@ class ModelBuilder(nn.Module):
             zf = self.neck(zf)
             xf = self.neck(xf)
         cls, loc = self.head(zf, xf)
-        cls = self.gem(cls)  # xyl 20221003
+        cls = self.gal(cls)  # xyl 20221003
 
         # get loss
 

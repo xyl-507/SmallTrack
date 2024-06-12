@@ -6,7 +6,7 @@ SmallTrack: Wavelet Pooling and Graph Enhanced Classification for UAV Small Obje
 (accepted by IEEE Transactions on Geoscience and Remote Sensing, DOI: 10.1109/TGRS.2023.3305728)
 ```
 
-![image](D:\XYL\3.目标跟踪\1.小论文\9.图注意力层+离散小波变换\figs\fig 2.jpg)
+![image](https://github.com/xyl-507/SmallTrack/blob/main/figs/fig%202.jpg)
 
 The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10220112)
 

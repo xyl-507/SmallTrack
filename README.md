@@ -94,3 +94,18 @@ See [TRAIN.md](TRAIN.md) for detailed instruction.
 The code based on the [PySOT](https://github.com/STVIR/pysot) , [SiamBAN](https://github.com/hqucv/siamban) ,
 [GAL](https://ieeexplore.ieee.org/document/9547682/) , [WaveCNets](https://ieeexplore.ieee.org/document/9508165/) and [Wavelet-Attention](https://link.springer.com/article/10.1007/s00530-022-00889-8)
 We would like to express our sincere thanks to the contributors.
+
+### Citation:
+If you find this work useful for your research, please cite the following papers:
+```
+@ARTICLE{10220112,
+  author={Xue, Yuanliang and Jin, Guodong and Shen, Tao and Tan, Lining and Wang, Nian and Gao, Jing and Wang, Lianfeng},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={SmallTrack: Wavelet Pooling and Graph Enhanced Classification for UAV Small Object Tracking}, 
+  year={2023},
+  volume={61},
+  pages={1-15},
+  keywords={Target tracking;Object tracking;Wavelet transforms;Feature extraction;Task analysis;Remote sensing;Visualization;Aerial tracking;graph enhanced classification;remote sensing;Siamese neural network;wavelet pooling layer (WPL)},
+  doi={10.1109/TGRS.2023.3305728}}
+```
+If you have any questions about this work, please contact with me via xyl_507@outlook.com

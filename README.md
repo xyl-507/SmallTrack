@@ -62,6 +62,8 @@ python tools/demo.py \
 Download datasets and put them into `testing_dataset` directory. Jsons of commonly used datasets can be downloaded from [Google Drive](https://drive.google.com/drive/folders/10cfXjwQQBQeu48XMf2xc_W1LucpistPI) or [BaiduYun](https://pan.baidu.com/s/1js0Qhykqqur7_lNRtle1tA#list/path=%2F). If you want to test tracker on new dataset, please refer to [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit) to setting `testing_dataset`. 
 
 ### Test tracker
+- Note that it is not necessary to generate the json files for the test dataset as per pysot.
+- We read the dataset format online to generate the corresponding dictionary, the relevant files are in [visdrone.py](https://github.com/xyl-507/SmallTrack/blob/main/toolkit/datasets/visdrone.py)
 
 ```bash
 cd experiments/smalltrack_r50_l234

@@ -265,10 +265,17 @@ class DWT_2D(Module):
         """
         L1 = np.max((self.input_height, self.input_width))
         L = math.floor(L1 / 2)
-        matrix_h = np.zeros((L + 1,      L1 + self.band_length - 2))                                   # xyl 20221011 代替最大池化
+        # matrix_h = np.zeros((L,      L1 + self.band_length - 2))
         matrix_g = np.zeros((L1 - L, L1 + self.band_length - 2))
+        # -------------------------------------------------------------------------
+        if self.input_height % 2 == 0:  # 原版 针对输入是奇数的情况
+            matrix_h = np.zeros((L,      L1 + self.band_length - 2))
+        else:                                                             # xyl 20221008 针对输入是奇数的情况
+            matrix_h = np.zeros((L + 1,      L1 + self.band_length - 2))  # 代替最大池化时，改的 xyl20221011
+        # -------------------------------------------------------------------------
+
         end = None if self.band_length_half == 1 else (
-            -self.band_length_half+1)
+                -self.band_length_half+1)
 
         index = 0
         for i in range(L):
@@ -276,9 +283,9 @@ class DWT_2D(Module):
                 matrix_h[i, index+j] = self.band_low[j]
             index += 2
         matrix_h_0 = matrix_h[0:(math.floor(
-            self.input_height / 2 + 1)), 0:(self.input_height + self.band_length - 2)]                 # xyl 20221011 代替最大池化
+            self.input_height / 2 + 1)), 0:(self.input_height + self.band_length - 2)]   # +1 是代替最大池化时，改的 xyl20221011
         matrix_h_1 = matrix_h[0:(math.floor(
-            self.input_width / 2 + 1)), 0:(self.input_width + self.band_length - 2)]                   # xyl 20221011 代替最大池化
+            self.input_width / 2 + 1)), 0:(self.input_width + self.band_length - 2)]   # +1 代替最大池化时，改的 xyl20221011
 
         index = 0
         # for i in range(L1 - L):
@@ -291,10 +298,12 @@ class DWT_2D(Module):
         # matrix_g_1 = matrix_g[0:(self.input_width - math.floor(
         #     self.input_width / 2)), 0:(self.input_width + self.band_length - 2)]
 
+        # -------------------------------------------------------------------------
         matrix_g_0 = matrix_g[0:(math.floor(                                   # xyl 20221008 针对输入是奇数的情况
-            self.input_height / 2 + 1)), 0:(self.input_height + self.band_length - 2)]                   # xyl 20221011 代替最大池化
+            self.input_height / 2 + 1)), 0:(self.input_height + self.band_length - 2)]   # +1 代替最大池化时，改的 xyl20221011
         matrix_g_1 = matrix_g[0:(math.floor(
-            self.input_width / 2 + 1)), 0:(self.input_width + self.band_length - 2)]                   # xyl 20221011 代替最大池化
+            self.input_width / 2 + 1)), 0:(self.input_width + self.band_length - 2)]   # +1 代替最大池化时，改的 xyl20221011
+        # -------------------------------------------------------------------------
 
         matrix_h_0 = matrix_h_0[:, (self.band_length_half-1):end]
         matrix_h_1 = matrix_h_1[:, (self.band_length_half-1):end]

@@ -8,7 +8,7 @@ from glob import glob
 
 class Video(object):
     def __init__(self, name, root, video_dir, init_rect, img_names,
-            gt_rect, attr, load_img=False):
+                 gt_rect, attr, load_img=False):
         self.name = name
         self.video_dir = video_dir
         self.init_rect = init_rect
@@ -36,7 +36,7 @@ class Video(object):
         """
         if not tracker_names:
             tracker_names = [x.split('/')[-1] for x in glob(path)
-                    if os.path.isdir(x)]
+                             if os.path.isdir(x)]
         if isinstance(tracker_names, str):
             tracker_names = [tracker_names]
         for name in tracker_names:
@@ -44,7 +44,7 @@ class Video(object):
             if os.path.exists(traj_file):
                 with open(traj_file, 'r') as f :
                     pred_traj = [list(map(float, x.strip().split(',')))
-                            for x in f.readlines()]
+                                 for x in f.readlines()]
                 if len(pred_traj) != len(self.gt_traj):
                     print(name, len(pred_traj), len(self.gt_traj), self.name)
                 if store:
@@ -77,6 +77,11 @@ class Video(object):
         for i in range(len(self.img_names)):
             if self.imgs is not None:
                 yield self.imgs[i], self.gt_traj[i]
+            elif 'VTUAV' in self.img_names[i]:  # 隔10帧标注的数据集（VTUAV）
+                # print(i)
+                # print(self.img_names[i])
+                # print('self.gt_traj[i] is ',self.gt_traj[i])
+                yield cv2.imread(self.img_names[i]), self.gt_traj[int(i/10)]
             else:
                 yield cv2.imread(self.img_names[i]), self.gt_traj[i]
 
@@ -98,7 +103,7 @@ class Video(object):
                 roi = list(map(int, roi))
                 color = tuple(map(int, color))
                 img = cv2.rectangle(img, (roi[0], roi[1]), (roi[0]+roi[2], roi[1]+roi[3]),
-                         color, linewidth)
+                                    color, linewidth)
                 if name:
                     img = cv2.putText(img, name, (roi[0], roi[1]-5), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, color, 1)
         return img
@@ -116,14 +121,14 @@ class Video(object):
         if len(pred_trajs) == 0 and len(self.pred_trajs) > 0:
             pred_trajs = self.pred_trajs
         for i, (roi, img) in enumerate(zip(self.gt_traj,
-                self.imgs[self.start_frame:self.end_frame+1])):
+                                           self.imgs[self.start_frame:self.end_frame+1])):
             img = img.copy()
             if len(img.shape) == 2:
                 img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
             else:
                 img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
             img = self.draw_box(roi, img, linewidth, (0, 255, 0),
-                    'gt' if show_name else None)
+                                'gt' if show_name else None)
             for name, trajs in pred_trajs.items():
                 if name not in colors:
                     color = tuple(np.random.randint(0, 256, 3))
@@ -131,9 +136,9 @@ class Video(object):
                 else:
                     color = colors[name]
                 img = self.draw_box(trajs[0][i], img, linewidth, color,
-                        name if show_name else None)
+                                    name if show_name else None)
             cv2.putText(img, str(i+self.start_frame), (5, 20),
-                    cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (255, 255, 0), 2)
+                        cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (255, 255, 0), 2)
             cv2.imshow(self.name, img)
             cv2.waitKey(40)
             video.append(img.copy())

@@ -65,6 +65,10 @@ python tools/demo.py \
 
 Download datasets and put them into `testing_dataset` directory. Jsons of commonly used datasets can be downloaded from [Google Drive](https://drive.google.com/drive/folders/10cfXjwQQBQeu48XMf2xc_W1LucpistPI) or [BaiduYun](https://pan.baidu.com/s/1js0Qhykqqur7_lNRtle1tA#list/path=%2F). If you want to test tracker on new dataset, please refer to [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit) to setting `testing_dataset`. 
 
+The dataset annotated at intervals of 10 frames (VTUAV) needs to be modified: 
+- 1）The GT is read at intervals of 10 frames: line80 in '/public/workspace/xyl/uavtrackers/SmallTrack-main/toolkit/datasets/video.py'
+- 2）The intervals of VTUAV are Spaces：line.split(' ') in '/public/workspace/xyl/uavtrackers/SmallTrack-main/make_json-VTUAV.py'
+
 ### Test tracker
 - Note that it is not necessary to generate the json files for the test dataset as per pysot.
 - We read the dataset format online to generate the corresponding dictionary, the relevant files are in [visdrone.py](https://github.com/xyl-507/SmallTrack/blob/main/toolkit/datasets/visdrone.py)

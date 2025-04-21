@@ -39,6 +39,10 @@ Note:
 
 Please find installation instructions in [`INSTALL.md`](INSTALL.md).
 
+Specially for: ImportError: cannot import name 'region' from partially initialized module 'toolkit.utils'
+```
+Solution is：commented out 'from toolkit.utils.region import vot_overlap, vot_float2str' in /public/workspace/xyl/uavtrackers/SmallTrack-main/tools/test.py
+```
 ## Quick Start: Using SmallTrack
 
 ### Add SmallTrack to your PYTHONPATH

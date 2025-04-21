@@ -68,7 +68,7 @@ Download datasets and put them into `testing_dataset` directory. Jsons of common
 The dataset annotated at intervals of 10 frames (VTUAV) needs to be modified: 
 - 1）The GT is read at intervals of 10 frames: line80 in '/public/workspace/xyl/uavtrackers/SmallTrack-main/toolkit/datasets/video.py'
 - 2）The intervals of VTUAV are Spaces：line.split(' ') in '/public/workspace/xyl/uavtrackers/SmallTrack-main/make_json-VTUAV.py'
-Json file is in [GitHub](https://github.com/xyl-507/SmallTrack/releases/tag/Json)
+- !!! Json file is in [[GitHub]](https://github.com/xyl-507/SmallTrack/releases/tag/Json) 
 
 ### Test tracker
 - Note that it is not necessary to generate the json files for the test dataset as per pysot.
